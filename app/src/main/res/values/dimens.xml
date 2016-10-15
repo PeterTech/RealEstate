@@ -10,5 +10,6 @@
     <dimen name="size_120dip">120dip</dimen>
 
     <!--Text Size -->
+    <dimen name="text_15">15sp</dimen>
     <dimen name="text_20">20sp</dimen>
 </resources>

@@ -5,4 +5,10 @@
     <string name="submit">Submit</string>
     <string name="area">Area</string>
     <string name="land_detail">Land Details :</string>
+    <string name="location">Location</string>
+    <string name="propety_type">Property Type</string>
+    <string name="direction">Direction</string>
+    <string name="description">Description</string>
+    <string name="other">Others :</string>
+    <string name="colon">:</string>
 </resources>

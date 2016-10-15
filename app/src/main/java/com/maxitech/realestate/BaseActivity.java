@@ -17,7 +17,7 @@ public abstract class BaseActivity extends AppCompatActivity
 {
 
 	public LayoutInflater inflater;
-	public LinearLayout llMiddle,llTop1,llTop2,llHeader;
+	public LinearLayout llMiddle,llTop1,llTop2;
 	private AlertDialog.Builder alertDialog;
 	private ProgressDialog progressDialog;
 	public TextView tvHome,tvHeading,tvDone;
@@ -37,7 +37,6 @@ public abstract class BaseActivity extends AppCompatActivity
 	{
 		inflater 				=  this.getLayoutInflater();
 		llMiddle				=  (LinearLayout) findViewById(R.id.llMiddle);
-		llHeader				=  (LinearLayout) findViewById(R.id.llHeader);
 		alertDialog             =  new AlertDialog.Builder(BaseActivity.this);
 		progressDialog          =  new ProgressDialog(BaseActivity.this);
 	}

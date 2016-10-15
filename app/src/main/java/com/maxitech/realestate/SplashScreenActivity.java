@@ -13,7 +13,6 @@ public class SplashScreenActivity extends BaseActivity {
     @Override
     public void initial() {
         ll_Body=(LinearLayout)inflater.inflate(R.layout.splash_screen,null);
-        llHeader.setVisibility(View.GONE);
         llMiddle.addView(ll_Body, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         new Handler().postDelayed(new Runnable()
         {
@@ -21,8 +20,8 @@ public class SplashScreenActivity extends BaseActivity {
             public void run()
             {
                 finish();
-                Intent intent		=	new Intent(SplashScreenActivity.this, LoginActivity.class);//CompetitorsListActivity
-                startActivity(intent);
+               // Intent intent		=	new Intent(SplashScreenActivity.this, LoginActivity.class);//CompetitorsListActivity
+              //  startActivity(intent);
             }
 
 
