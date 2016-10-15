@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="@dimen/size_120dip"
+        android:layout_height="@dimen/size_100dip"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/size_10"
+        android:background="@color/light_gray" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_20"
+        android:layout_weight="0.6"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:text="@string/area"
+            android:textSize="@dimen/text_20" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/area" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/area" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10"
+            android:text="phone" />
+
+
+    </LinearLayout>
+</LinearLayout>

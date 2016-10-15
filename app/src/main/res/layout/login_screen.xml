@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:text="@string/District" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:background="@null"
+            android:drawableRight="@drawable/tri"
+            android:hint="@string/District"
+            android:textColorHint="#c1c1c1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:layout_marginBottom="@dimen/size_30"
+            android:background="@drawable/select" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:text="@string/city_village" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:background="@null"
+            android:drawableRight="@drawable/tri"
+            android:hint="@string/city_village"
+            android:textColorHint="#c1c1c1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:layout_marginBottom="@dimen/size_30"
+            android:background="@drawable/select" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:background="@drawable/submit"
+            android:text="@string/submit"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_20"
+            android:textColor="@color/white_text"/>
+    </LinearLayout>
+
+</LinearLayout>
