@@ -55,6 +55,14 @@ private  void initializeView(){
     sp_district= (Spinner) ll_Body.findViewById(R.id.sp_district);
     sp_city= (Spinner) ll_Body.findViewById(R.id.sp_city);
     btn_submit= (Button) ll_Body.findViewById(R.id.btn_submit);
+
+    arrayCityAdapter = new ArrayAdapter<CityDO>
+            (DashboardActivity.this, android.R.layout.simple_spinner_item,arrCitiesTemp);
+
+    arrayCityAdapter.setDropDownViewResource
+            (android.R.layout.simple_spinner_dropdown_item);
+
+    sp_city.setAdapter(arrayCityAdapter);
 }
     private ArrayList<DistrictDO> arrDistricts = new ArrayList<DistrictDO>();
     private ArrayList<CityDO> arrCities = new ArrayList<CityDO>();
@@ -107,37 +115,44 @@ private  void initializeView(){
         });
     }
     private String districtCode="",cityCode="";
-
+    ArrayList<CityDO> arrCitiesTemp;
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
 
         if(parent.getId() == R.id.sp_city){
-
-            CityDO cityDO =  arrCities.get(position);
+            CityDO cityDO =  arrCitiesTemp.get(position);
             cityCode = cityDO.getCitycode();
             districtCode=cityDO.getDistrictcode();
-        }else if(parent.getId() == R.id.sp_district){
-            DistrictDO districtDO =  arrDistricts.get(position);
-
-            if(districtDO.name.equalsIgnoreCase("All")){
+        }else if(parent.getId() == R.id.sp_district) {
+            DistrictDO districtDO = arrDistricts.get(position);
+            arrCitiesTemp = new ArrayList<CityDO>();
+            if (districtDO.name.equalsIgnoreCase("All")) {
                 showCoustomDialog("Please Select District");
-            }else{
-                ArrayList<CityDO> arrCitiesTemp = new ArrayList<CityDO>();
-                for(CityDO cityP: arrCities){
-                      if(cityP.districtcode.equalsIgnoreCase(districtDO.code)){
+
+                cityCode = "";
+                districtCode = "";
+            } else {
+
+                for (CityDO cityP : arrCities) {
+                    if (cityP.districtcode.equalsIgnoreCase(districtDO.code)) {
                         arrCitiesTemp.add(cityP);
                     }
                 }
-                arrayCityAdapter = new ArrayAdapter<CityDO>
-                        (DashboardActivity.this, android.R.layout.simple_spinner_item,arrCitiesTemp);
 
-                arrayCityAdapter.setDropDownViewResource
-                        (android.R.layout.simple_spinner_dropdown_item);
+                if (arrCitiesTemp.size() > 0) {
+                    CityDO cityDO = arrCitiesTemp.get(0);
+                    cityCode = cityDO.getCitycode();
+                    districtCode = cityDO.getDistrictcode();
 
-                sp_city.setAdapter(arrayCityAdapter);
+                } else {
+                    cityCode = "";
+                    districtCode = "";
+                }
 
             }
+
+            arrayCityAdapter.notifyDataSetChanged();
         }
     }
 

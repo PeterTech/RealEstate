@@ -16,16 +16,16 @@ public class VenturePropertiesActivity extends BaseActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private Toolbar toolbar;
-    private String districtCode="",cityCode="";
+  //  private String districtCode="",cityCode="";
 
     @Override
     public void initial() {
         ll_Body=(CoordinatorLayout)inflater.inflate(R.layout.venture_screen,null);
         llMiddle.addView(ll_Body, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
-        Bundle bundle = getIntent().getExtras();
+       /* Bundle bundle = getIntent().getExtras();
         districtCode=bundle.getString("districtCode");
         cityCode=bundle.getString("cityCode");
-
+*/
         viewPager = (ViewPager)ll_Body.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
