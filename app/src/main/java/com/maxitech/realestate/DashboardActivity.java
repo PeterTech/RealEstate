@@ -55,8 +55,8 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
         sp_city= (Spinner) ll_Body.findViewById(R.id.sp_city);
         btn_submit= (Button) ll_Body.findViewById(R.id.btn_submit);
 
-        arrayCityAdapter = new ArrayAdapter<CityDO>
-                (DashboardActivity.this, android.R.layout.simple_spinner_item,arrCitiesTemp);
+       // arrayCityAdapter = new ArrayAdapter<CityDO>(DashboardActivity.this, android.R.layout.simple_spinner_item,arrCitiesTemp);
+        arrayCityAdapter = new ArrayAdapter<CityDO>(DashboardActivity.this, R.layout.spinner_item_white,arrCitiesTemp);
 
         arrayCityAdapter.setDropDownViewResource
                 (android.R.layout.simple_spinner_dropdown_item);
@@ -83,8 +83,8 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
                     DistrictDO districtDO= postSnapshot.getValue(DistrictDO.class);
                     arrDistricts.add(districtDO);
                 }
-                arrayDisAdapter = new ArrayAdapter<DistrictDO>
-                        (DashboardActivity.this, android.R.layout.simple_spinner_item,arrDistricts);
+               // arrayDisAdapter = new ArrayAdapter<DistrictDO>(DashboardActivity.this, android.R.layout.simple_spinner_item,arrDistricts);
+                arrayDisAdapter = new ArrayAdapter<DistrictDO>(DashboardActivity.this,R.layout.spinner_item_white,arrDistricts);
 
                 arrayDisAdapter.setDropDownViewResource
                         (android.R.layout.simple_spinner_dropdown_item);

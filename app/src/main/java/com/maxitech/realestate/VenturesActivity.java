@@ -68,8 +68,8 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
                         arrAreas.add(areaDO);
                     }
                 }
-                arrayAreaAdapter = new ArrayAdapter<AreaDO>
-                        (VenturesActivity.this, android.R.layout.simple_spinner_item,arrAreas);
+               // arrayAreaAdapter = new ArrayAdapter<AreaDO>(VenturesActivity.this, android.R.layout.simple_spinner_item,arrAreas);
+                arrayAreaAdapter = new ArrayAdapter<AreaDO>(VenturesActivity.this, R.layout.spinner_item_gray,arrAreas);
 
                 arrayAreaAdapter.setDropDownViewResource
                         (android.R.layout.simple_spinner_dropdown_item);
@@ -122,6 +122,8 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
         sp_area= (Spinner) ll_Body.findViewById(R.id.sp_area);
         recycler_view= (RecyclerView) ll_Body.findViewById(R.id.recycler_view);
         consultantAdapter =new ConsultantAdapter(new ArrayList<ConsultantDO>());
+
+        recycler_view.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recycler_view.setAdapter(consultantAdapter);
         recycler_view.setLayoutManager(new LinearLayoutManager(VenturesActivity.this));
         recycler_view.setOnClickListener(new View.OnClickListener() {

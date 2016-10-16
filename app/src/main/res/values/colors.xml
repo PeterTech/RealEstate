@@ -7,4 +7,5 @@
     <color name="light_gray">#e0e0d1</color>
     <color name="navigationBarColor">#000000</color>
     <color name="orange_text">#f4a442</color>
+    <color name="gray_text">#8b9099</color>
 </resources>

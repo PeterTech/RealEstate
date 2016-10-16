@@ -14,9 +14,10 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/size_10"
             android:layout_marginLeft="@dimen/size_20"
             android:layout_marginRight="@dimen/size_20"
+            android:textSize="@dimen/text_15"
+            android:textColor="@color/white_text"
             android:text="@string/District" />
 
 
@@ -72,9 +73,10 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/size_10"
             android:layout_marginLeft="@dimen/size_20"
             android:layout_marginRight="@dimen/size_20"
+            android:textColor="@color/white_text"
+            android:textSize="@dimen/text_15"
             android:text="@string/city_village" />
 
         <RelativeLayout
@@ -126,14 +128,14 @@
             android:background="@drawable/sep" />
         <Button
             android:id="@+id/btn_submit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/size_20"
             android:layout_marginRight="@dimen/size_20"
             android:background="@drawable/submit"
+            android:layout_gravity="center_horizontal"
             android:text="@string/submit"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_20"
+            android:textSize="@dimen/text_15"
             android:textColor="@color/white_text"/>
     </LinearLayout>
 
