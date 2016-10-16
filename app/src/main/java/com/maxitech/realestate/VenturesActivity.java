@@ -1,6 +1,7 @@
 package com.maxitech.realestate;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -93,15 +95,41 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
             public void onCancelled(FirebaseError firebaseError) {
             }
         });
+
+        myFirebaseRef.child("tblProperties").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ArrayList<PropertyDO> arrProperties = new ArrayList<PropertyDO>();
+                    PropertyDO propertyDO = postSnapshot.getValue(PropertyDO.class);
+                    if(hmProperties.containsKey(propertyDO.getConsutantid())){
+                        arrProperties= hmProperties.get(propertyDO.getConsutantid());
+                    }
+                    arrProperties.add(propertyDO);
+                    hmProperties.put(propertyDO.getConsutantid(),arrProperties);
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
     }
 
     private ArrayList<ConsultantDO> arrConsultants = new ArrayList<ConsultantDO>();
+    private HashMap<String,ArrayList<PropertyDO>> hmProperties = new HashMap<String,ArrayList<PropertyDO>>();
     private  void initializeView(){
         sp_area= (Spinner) ll_Body.findViewById(R.id.sp_area);
         recycler_view= (RecyclerView) ll_Body.findViewById(R.id.recycler_view);
         consultantAdapter =new ConsultantAdapter(new ArrayList<ConsultantDO>());
         recycler_view.setAdapter(consultantAdapter);
         recycler_view.setLayoutManager(new LinearLayoutManager(VenturesActivity.this));
+        recycler_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -127,11 +155,12 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
             public TextView tv_ventureName,tv_count;
-
+            public View parentView;
             public MyViewHolder(View view) {
                 super(view);
                 tv_count = (TextView) view.findViewById(R.id.tv_count);
                 tv_ventureName = (TextView) view.findViewById(R.id.tv_ventureName);
+                parentView = view;
             }
         }
 
@@ -153,10 +182,27 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
         }
 
         @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
+        public void onBindViewHolder(final MyViewHolder holder, int position) {
             ConsultantDO consultantDO = consultantDOList.get(position);
             holder.tv_ventureName.setText(consultantDO.getName());
-            holder.tv_count.setText("2");
+            if(hmProperties.containsKey(consultantDO.getCode())){
+                holder.tv_count.setVisibility(View.VISIBLE);
+                holder.tv_count.setText(hmProperties.get(consultantDO.getCode()).size());
+            }else{
+                holder.tv_count.setVisibility(View.GONE);
+            }
+
+            holder.parentView.setTag(consultantDO.getCode());
+            holder.parentView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(holder.tv_count.getVisibility() == View.VISIBLE){
+                        Intent intent = new Intent(VenturesActivity.this,VenturePropertiesActivity.class);
+                        intent.putExtra("ventureDetails",hmProperties.get(v.getTag()));
+                        startActivity(intent);
+                    }
+                }
+            });
         }
 
         @Override
