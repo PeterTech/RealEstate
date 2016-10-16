@@ -139,8 +139,11 @@ private  void initializeView(){
                     }
                 }
             }
+            arrayCityAdapter.notifyDataSetChanged();
             if (arrCitiesTemp.size() > 0) {
-                arrayCityAdapter.notifyDataSetChanged();
+                CityDO cityDO =  arrCitiesTemp.get(0);
+                cityCode = cityDO.getCitycode();
+                districtCode=cityDO.getDistrictcode();
                 sp_city.setSelection(0);
             }else{
 
