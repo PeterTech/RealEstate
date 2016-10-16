@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
     private ArrayAdapter<CityDO> arrayCityAdapter;
     @Override
     public void initial() {
+        getSupportActionBar().hide();
         ll_Body=(LinearLayout)inflater.inflate(R.layout.dashboard_screen,null);
         llMiddle.addView(ll_Body, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         initializeView();
