@@ -2,34 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
     android:background="@drawable/card"
     android:gravity="center_vertical"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:padding="@dimen/size_20">
 
     <TextView
         android:id="@+id/tv_ventureName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-
         android:layout_weight="0.6"
-        android:text="@string/area" />
+        android:text="@string/area"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_14" />
 
     <TextView
         android:id="@+id/tv_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/size_10"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="1"
-        android:textColor="@color/white_text"
-        android:background="@drawable/box" />
+        android:textColor="@color/white_text" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
         android:background="@drawable/arrow" />
 
 </LinearLayout>

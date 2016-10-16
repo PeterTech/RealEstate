@@ -20,7 +20,7 @@ public class VenturePropertiesActivity extends BaseActivity {
     private Toolbar toolbar;
     private HashMap<String,ArrayList<PropertyDO>> hmProperties = new HashMap<String,ArrayList<PropertyDO>>();
     private ArrayList<PropertyDO> arrProperties = new ArrayList<PropertyDO>();
-  //  private String districtCode="",cityCode="";
+    private String consultantName="";
 
     @Override
     public void initial() {
@@ -30,7 +30,8 @@ public class VenturePropertiesActivity extends BaseActivity {
 
         Bundle bundle=getIntent().getExtras();
         arrProperties= (ArrayList<PropertyDO>) bundle.get("ventureDetails");
-
+        consultantName= (String) bundle.get("consultantName");
+        tvScreenTitle.setText(consultantName+"");
 
         ArrayList<PropertyDO> arrDetails;
         for(PropertyDO propertyDO : arrProperties){
@@ -49,12 +50,19 @@ public class VenturePropertiesActivity extends BaseActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PropertyFragment(hmProperties.get(1)), "Lands");
-        adapter.addFragment(new PropertyFragment(hmProperties.get(2)), "Ventures");
-        adapter.addFragment(new PropertyFragment(hmProperties.get(3)), "Houses");
-        adapter.addFragment(new PropertyFragment(hmProperties.get(4)), "Rents");
+        adapter.addFragment(new PropertyFragment(hmProperties.get("1"),consultantName), "Lands");
+        adapter.addFragment(new PropertyFragment(hmProperties.get("2"),consultantName), "Ventures");
+        adapter.addFragment(new PropertyFragment(hmProperties.get("3"),consultantName), "Houses");
+        adapter.addFragment(new PropertyFragment(hmProperties.get("4"),consultantName), "Rents");
         viewPager.setAdapter(adapter);
         tabLayout = (TabLayout) ll_Body.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(R.anim.animation_enter, R.anim.animation_leave);
     }
 }

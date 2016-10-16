@@ -185,7 +185,7 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
 
         @Override
         public void onBindViewHolder(final MyViewHolder holder, int position) {
-            ConsultantDO consultantDO = consultantDOList.get(position);
+            final ConsultantDO consultantDO = consultantDOList.get(position);
             holder.tv_ventureName.setText(consultantDO.getName());
             if(hmProperties.containsKey(consultantDO.getCode())){
                 holder.tv_count.setVisibility(View.VISIBLE);
@@ -194,14 +194,17 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
                 holder.tv_count.setVisibility(View.GONE);
             }
 
-            holder.parentView.setTag(consultantDO.getCode());
+            holder.parentView.setTag(consultantDO);
             holder.parentView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(holder.tv_count.getVisibility() == View.VISIBLE){
+                        ConsultantDO consultantDO = (ConsultantDO) v.getTag();
                         Intent intent = new Intent(VenturesActivity.this,VenturePropertiesActivity.class);
-                        intent.putExtra("ventureDetails",hmProperties.get(v.getTag()));
+                        intent.putExtra("ventureDetails",hmProperties.get(consultantDO.getCode()));
+                        intent.putExtra("consultantName",consultantDO.getName());
                         startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     }
                 }
             });
@@ -213,4 +216,9 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
