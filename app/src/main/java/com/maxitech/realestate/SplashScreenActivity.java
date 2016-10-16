@@ -20,8 +20,8 @@ public class SplashScreenActivity extends BaseActivity {
             public void run()
             {
                 finish();
-               // Intent intent		=	new Intent(SplashScreenActivity.this, LoginActivity.class);//CompetitorsListActivity
-              //  startActivity(intent);
+                Intent intent		=	new Intent(SplashScreenActivity.this, DashboardActivity.class);//CompetitorsListActivity
+                startActivity(intent);
             }
 
 
