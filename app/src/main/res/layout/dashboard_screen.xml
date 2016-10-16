@@ -123,7 +123,7 @@
             android:layout_marginLeft="@dimen/size_20"
             android:layout_marginRight="@dimen/size_20"
             android:layout_marginBottom="@dimen/size_30"
-            android:background="@drawable/select" />
+            android:background="@drawable/sep" />
         <Button
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"

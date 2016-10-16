@@ -17,7 +17,37 @@
             android:layout_marginRight="@dimen/size_20"
             android:text="@string/area" />
 
-        <EditText
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/sp_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:spinnerMode="dropdown"
+                android:prompt="@string/city_village" />
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/size_10"
+                android:layout_gravity="center"
+                android:src="@drawable/tri" />
+
+        </RelativeLayout>
+       <!-- <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/size_10"
@@ -27,14 +57,14 @@
             android:drawableRight="@drawable/tri"
             android:hint="@string/area"
             android:textColorHint="#c1c1c1" />
-
+-->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/size_20"
             android:layout_marginRight="@dimen/size_20"
-            android:layout_marginBottom="@dimen/size_30"
-            android:background="@drawable/select" />
+            android:layout_marginBottom="@dimen/size_10"
+            android:background="@drawable/sep" />
         </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

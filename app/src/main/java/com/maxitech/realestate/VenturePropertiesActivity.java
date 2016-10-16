@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 /**
  * Created by Avyukt on 10/16/2016.
  */
-public class VentureActivity extends BaseActivity {
+public class VenturePropertiesActivity extends BaseActivity {
     private CoordinatorLayout ll_Body;
     private ViewPager viewPager;
     private TabLayout tabLayout;

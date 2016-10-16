@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -40,7 +39,7 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 if(!TextUtils.isEmpty(districtCode)&& !TextUtils.isEmpty(cityCode)){
-                    Intent intent= new Intent(DashboardActivity.this,VentureActivity.class);
+                    Intent intent= new Intent(DashboardActivity.this,VenturesActivity.class);
                     intent.putExtra("districtCode",districtCode);
                     intent.putExtra("cityCode",cityCode);
                     startActivity(intent);

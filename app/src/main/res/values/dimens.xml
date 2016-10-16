@@ -12,4 +12,10 @@
     <!--Text Size -->
     <dimen name="text_15">15sp</dimen>
     <dimen name="text_20">20sp</dimen>
+
+    <!--added for tablayout-->
+    <dimen name="tab_max_width">264dp</dimen>
+    <dimen name="tab_padding_bottom">16dp</dimen>
+    <dimen name="tab_label">14sp</dimen>
+    <dimen name="custom_tab_layout_height">72dp</dimen>
 </resources>
