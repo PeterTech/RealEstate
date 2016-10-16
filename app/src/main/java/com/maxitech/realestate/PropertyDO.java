@@ -1,19 +1,49 @@
 package com.maxitech.realestate;
 
+import java.io.Serializable;
+
 /**
  * Created by Anil.Jain on 10/16/2016.
  */
 
-public class PropertyDO {
+public class PropertyDO implements Serializable{
 
-    String name,code,address,phone,consutantid,imageurl;
+    String address,consultantid,imageurl,name,phoneNumber,propertyType,propertyid;
 
-    public PropertyDO(String name, String code, String address, String phone, String consutantid, String imageurl) {
-        this.name = name;
-        this.code = code;
+    public PropertyDO() {
+    }
+
+    public PropertyDO(String address, String consultantid, String imageurl, String name, String phoneNumber, String propertyType, String propertyid) {
         this.address = address;
-        this.phone = phone;
-        this.consutantid = consutantid;
+        this.consultantid = consultantid;
+        this.imageurl = imageurl;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.propertyType = propertyType;
+        this.propertyid = propertyid;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getConsultantid() {
+        return consultantid;
+    }
+
+    public void setConsultantid(String consultantid) {
+        this.consultantid = consultantid;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
     }
 
@@ -25,43 +55,27 @@ public class PropertyDO {
         this.name = name;
     }
 
-    public String getCode() {
-        return code;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPropertyType() {
+        return propertyType;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPropertyType(String propertyType) {
+        this.propertyType = propertyType;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPropertyid() {
+        return propertyid;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getConsutantid() {
-        return consutantid;
-    }
-
-    public void setConsutantid(String consutantid) {
-        this.consutantid = consutantid;
-    }
-
-    public String getImageurl() {
-        return imageurl;
-    }
-
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
+    public void setPropertyid(String propertyid) {
+        this.propertyid = propertyid;
     }
 }

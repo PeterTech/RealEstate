@@ -12,9 +12,9 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/size_10"
-            android:layout_marginLeft="@dimen/size_20"
-            android:layout_marginRight="@dimen/size_20"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/size_5"
+            android:layout_marginLeft="@dimen/size_40"
             android:text="@string/area" />
 
         <RelativeLayout

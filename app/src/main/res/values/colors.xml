@@ -6,4 +6,5 @@
     <color name="white_text">#ffffff</color>
     <color name="light_gray">#e0e0d1</color>
     <color name="navigationBarColor">#000000</color>
+    <color name="orange_text">#f4a442</color>
 </resources>

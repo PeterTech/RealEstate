@@ -102,11 +102,11 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     ArrayList<PropertyDO> arrProperties = new ArrayList<PropertyDO>();
                     PropertyDO propertyDO = postSnapshot.getValue(PropertyDO.class);
-                    if(hmProperties.containsKey(propertyDO.getConsutantid())){
-                        arrProperties= hmProperties.get(propertyDO.getConsutantid());
+                    if(hmProperties.containsKey(propertyDO.getConsultantid())){
+                        arrProperties= hmProperties.get(propertyDO.getConsultantid());
                     }
                     arrProperties.add(propertyDO);
-                    hmProperties.put(propertyDO.getConsutantid(),arrProperties);
+                    hmProperties.put(propertyDO.getConsultantid(),arrProperties);
                 }
             }
 
@@ -187,7 +187,7 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
             holder.tv_ventureName.setText(consultantDO.getName());
             if(hmProperties.containsKey(consultantDO.getCode())){
                 holder.tv_count.setVisibility(View.VISIBLE);
-                holder.tv_count.setText(hmProperties.get(consultantDO.getCode()).size());
+                holder.tv_count.setText(hmProperties.get(consultantDO.getCode()).size()+"");
             }else{
                 holder.tv_count.setVisibility(View.GONE);
             }
