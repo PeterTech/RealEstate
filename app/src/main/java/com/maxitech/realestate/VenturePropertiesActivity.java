@@ -30,20 +30,19 @@ public class VenturePropertiesActivity extends BaseActivity {
 
         Bundle bundle=getIntent().getExtras();
         arrProperties= (ArrayList<PropertyDO>) bundle.get("ventureDetails");
-        tabLayout = (TabLayout) ll_Body.findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+
 
         ArrayList<PropertyDO> arrDetails;
         for(PropertyDO propertyDO : arrProperties){
             if(hmProperties.containsKey(propertyDO.getPropertyType())){
                 arrDetails = hmProperties.get(propertyDO.getPropertyType());
-                arrDetails.add(propertyDO);
             }
             else {
                 arrDetails= new ArrayList<PropertyDO>();
-                arrDetails.add(propertyDO);
-                hmProperties.put(propertyDO.getPropertyType(),arrDetails);
             }
+            arrDetails.add(propertyDO);
+            hmProperties.put(propertyDO.getPropertyType(),arrDetails);
+
         }
 
         setupViewPager (viewPager);
@@ -55,5 +54,7 @@ public class VenturePropertiesActivity extends BaseActivity {
         adapter.addFragment(new PropertyFragment(hmProperties.get(3)), "Houses");
         adapter.addFragment(new PropertyFragment(hmProperties.get(4)), "Rents");
         viewPager.setAdapter(adapter);
+        tabLayout = (TabLayout) ll_Body.findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
     }
 }

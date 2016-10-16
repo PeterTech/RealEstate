@@ -38,14 +38,17 @@ public class PropertyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         llContent = (LinearLayout) inflater.inflate(R.layout.property_fragment, container, false);
+        initializeView();
         return llContent;
 
     }
     private  void initializeView(){
         recycler_view= (RecyclerView)llContent.findViewById(R.id.recycler_view);
         propertyAdapter =new PropertyAdapter(new ArrayList<PropertyDO>());
+        propertyAdapter.refresh(arrProperties);
         recycler_view.setAdapter(propertyAdapter);
         recycler_view.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
 
     public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.MyViewHolder> {
@@ -93,7 +96,10 @@ public class PropertyFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return propertyDOList.size();
+            if(propertyDOList!=null && propertyDOList.size()>0)
+             return propertyDOList.size();
+
+            return  0;
         }
     }
 }
