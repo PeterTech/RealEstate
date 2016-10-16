@@ -6,6 +6,7 @@
     android:orientation="horizontal">
 
     <ImageView
+        android:id="@+id/ivVentureImage"
         android:layout_width="@dimen/size_120dip"
         android:layout_height="@dimen/size_100dip"
         android:layout_gravity="center_vertical"
@@ -20,6 +21,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvVentureName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/size_10"
@@ -27,16 +29,14 @@
             android:textSize="@dimen/text_20" />
 
         <TextView
+            android:id="@+id/tvAddress"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:maxLines="3"
             android:text="@string/area" />
 
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/area" />
-
-        <TextView
+            android:id="@+id/tvPhoneNumber"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_10"

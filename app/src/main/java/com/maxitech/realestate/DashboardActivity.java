@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,7 +40,7 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 if(!TextUtils.isEmpty(districtCode)&& !TextUtils.isEmpty(cityCode)){
-                    Intent intent= new Intent(DashboardActivity.this,VenturesActivity.class);
+                    Intent intent= new Intent(DashboardActivity.this,PropertiesListActivity.class);
                     intent.putExtra("districtCode",districtCode);
                     intent.putExtra("cityCode",cityCode);
                     startActivity(intent);
