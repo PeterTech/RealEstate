@@ -40,7 +40,7 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 if(!TextUtils.isEmpty(districtCode)&& !TextUtils.isEmpty(cityCode)){
-                    Intent intent= new Intent(DashboardActivity.this,PropertiesListActivity.class);
+                    Intent intent= new Intent(DashboardActivity.this,VenturesActivity.class);
                     intent.putExtra("districtCode",districtCode);
                     intent.putExtra("cityCode",cityCode);
                     startActivity(intent);
@@ -114,7 +114,7 @@ private  void initializeView(){
         });
     }
     private String districtCode="",cityCode="";
-    ArrayList<CityDO> arrCitiesTemp;
+    ArrayList<CityDO> arrCitiesTemp = new ArrayList<CityDO>();
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -125,7 +125,7 @@ private  void initializeView(){
             districtCode=cityDO.getDistrictcode();
         }else if(parent.getId() == R.id.sp_district) {
             DistrictDO districtDO = arrDistricts.get(position);
-            arrCitiesTemp = new ArrayList<CityDO>();
+            arrCitiesTemp.clear();
             if (districtDO.name.equalsIgnoreCase("All")) {
                 showCoustomDialog("Please Select District");
 
@@ -138,20 +138,16 @@ private  void initializeView(){
                         arrCitiesTemp.add(cityP);
                     }
                 }
+            }
+            if (arrCitiesTemp.size() > 0) {
+                arrayCityAdapter.notifyDataSetChanged();
+                sp_city.setSelection(0);
+            }else{
 
-                if (arrCitiesTemp.size() > 0) {
-                    CityDO cityDO = arrCitiesTemp.get(0);
-                    cityCode = cityDO.getCitycode();
-                    districtCode = cityDO.getDistrictcode();
-
-                } else {
-                    cityCode = "";
-                    districtCode = "";
-                }
-
+                cityCode = "";
+                districtCode = "";
             }
 
-            arrayCityAdapter.notifyDataSetChanged();
         }
     }
 
