@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class DashboardActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
-   private Firebase myFirebaseRef;
+    private Firebase myFirebaseRef;
     private LinearLayout ll_Body;
     private Spinner sp_district, sp_city;
     private Button btn_submit;
@@ -50,19 +50,19 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
         });
     }
 
-private  void initializeView(){
-    sp_district= (Spinner) ll_Body.findViewById(R.id.sp_district);
-    sp_city= (Spinner) ll_Body.findViewById(R.id.sp_city);
-    btn_submit= (Button) ll_Body.findViewById(R.id.btn_submit);
+    private  void initializeView(){
+        sp_district= (Spinner) ll_Body.findViewById(R.id.sp_district);
+        sp_city= (Spinner) ll_Body.findViewById(R.id.sp_city);
+        btn_submit= (Button) ll_Body.findViewById(R.id.btn_submit);
 
-    arrayCityAdapter = new ArrayAdapter<CityDO>
-            (DashboardActivity.this, android.R.layout.simple_spinner_item,arrCitiesTemp);
+        arrayCityAdapter = new ArrayAdapter<CityDO>
+                (DashboardActivity.this, android.R.layout.simple_spinner_item,arrCitiesTemp);
 
-    arrayCityAdapter.setDropDownViewResource
-            (android.R.layout.simple_spinner_dropdown_item);
+        arrayCityAdapter.setDropDownViewResource
+                (android.R.layout.simple_spinner_dropdown_item);
 
-    sp_city.setAdapter(arrayCityAdapter);
-}
+        sp_city.setAdapter(arrayCityAdapter);
+    }
     private ArrayList<DistrictDO> arrDistricts = new ArrayList<DistrictDO>();
     private ArrayList<CityDO> arrCities = new ArrayList<CityDO>();
 
@@ -139,8 +139,11 @@ private  void initializeView(){
                     }
                 }
             }
+            arrayCityAdapter.notifyDataSetChanged();
             if (arrCitiesTemp.size() > 0) {
-                arrayCityAdapter.notifyDataSetChanged();
+                CityDO cityDO =  arrCitiesTemp.get(0);
+                cityCode = cityDO.getCitycode();
+                districtCode=cityDO.getDistrictcode();
                 sp_city.setSelection(0);
             }else{
 

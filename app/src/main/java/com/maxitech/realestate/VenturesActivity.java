@@ -2,12 +2,16 @@ package com.maxitech.realestate;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -15,6 +19,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Avyukt on 10/16/2016.
@@ -22,12 +27,12 @@ import java.util.ArrayList;
 public class VenturesActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
     private LinearLayout ll_Body;
     private Spinner sp_area;
-    private String districtCode="",cityCode="",areaCode="";
+    private String districtCode="",cityCode="";
     private RecyclerView recycler_view;
     private Firebase myFirebaseRef;
     private ArrayAdapter<AreaDO> arrayAreaAdapter;
+    private ConsultantAdapter consultantAdapter;
     private ArrayList<AreaDO> arrAreas = new ArrayList<AreaDO>();
-    private ArrayList<ConsultantDO> arrConsultants = new ArrayList<ConsultantDO>();
     @Override
     public void initial() {
         ll_Body=(LinearLayout)inflater.inflate(R.layout.venture_list_screen,null);
@@ -40,6 +45,7 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
         myFirebaseRef=new Firebase("https://rlestate-e2700.firebaseio.com/");
         getList();
         sp_area.setOnItemSelectedListener(this);
+
     }
     private void getList(){
 
@@ -88,20 +94,75 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
             }
         });
     }
+
+    private ArrayList<ConsultantDO> arrConsultants = new ArrayList<ConsultantDO>();
     private  void initializeView(){
         sp_area= (Spinner) ll_Body.findViewById(R.id.sp_area);
-        //recycler_view= (RecyclerView) ll_Body.findViewById(R.id.recycler_view);
+        recycler_view= (RecyclerView) ll_Body.findViewById(R.id.recycler_view);
+        consultantAdapter =new ConsultantAdapter(new ArrayList<ConsultantDO>());
+        recycler_view.setAdapter(consultantAdapter);
+        recycler_view.setLayoutManager(new LinearLayoutManager(VenturesActivity.this));
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
 
         AreaDO areaDO =  arrAreas.get(position);
-        areaCode=areaDO.getAreacode();
+        String areaCode=areaDO.getAreacode();
+        ArrayList<ConsultantDO> arrConsult = new ArrayList<ConsultantDO>();
+        for(ConsultantDO consultantDO : arrConsultants){
+            if(consultantDO.areacode.equalsIgnoreCase(areaCode))
+                 arrConsult.add(consultantDO);
+        }
+        consultantAdapter.refresh(arrConsult);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+    public class ConsultantAdapter extends RecyclerView.Adapter<ConsultantAdapter.MyViewHolder> {
+
+        private List<ConsultantDO> consultantDOList;
+
+        public class MyViewHolder extends RecyclerView.ViewHolder {
+            public TextView tv_ventureName,tv_count;
+
+            public MyViewHolder(View view) {
+                super(view);
+                tv_count = (TextView) view.findViewById(R.id.tv_count);
+                tv_ventureName = (TextView) view.findViewById(R.id.tv_ventureName);
+            }
+        }
+
+
+        public  void refresh(List<ConsultantDO> consultantDOList){
+            this.consultantDOList=consultantDOList;
+            notifyDataSetChanged();
+        }
+        public ConsultantAdapter(List<ConsultantDO> propertyDOList) {
+            this.consultantDOList = propertyDOList;
+        }
+
+        @Override
+        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.ventlurelist_cell, parent, false);
+
+            return new MyViewHolder(itemView);
+        }
+
+        @Override
+        public void onBindViewHolder(MyViewHolder holder, int position) {
+            ConsultantDO consultantDO = consultantDOList.get(position);
+            holder.tv_ventureName.setText(consultantDO.getName());
+            holder.tv_count.setText("2");
+        }
+
+        @Override
+        public int getItemCount() {
+            return consultantDOList.size();
+        }
+    }
+
 }
