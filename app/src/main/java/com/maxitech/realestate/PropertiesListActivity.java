@@ -1,7 +1,6 @@
 package com.maxitech.realestate;
 
 import android.app.ActionBar;
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
