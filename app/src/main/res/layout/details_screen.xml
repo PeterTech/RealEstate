@@ -2,24 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/greybg"
+    android:background="@drawable/bgforhome"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card">
-
         <TextView
+            android:id="@+id/tvVentureName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/size_10"
             android:padding="@dimen/size_20"
             android:text="@string/area"
-            android:textSize="@dimen/text_20" />
+            android:background="@color/light_gray"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/text_18"/>
 
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -27,6 +23,7 @@
         android:background="@drawable/card">
 
         <ImageView
+            android:id="@+id/img_plot"
             android:layout_width="@dimen/size_120dip"
             android:layout_height="@dimen/size_100dip"
             android:layout_gravity="center_vertical"
@@ -35,6 +32,7 @@
             android:background="@color/light_gray" />
 
         <ImageView
+            android:id="@+id/img_layout"
             android:layout_width="@dimen/size_120dip"
             android:layout_height="@dimen/size_100dip"
             android:layout_gravity="center_vertical"
@@ -53,7 +51,6 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/light_gray"
             android:orientation="horizontal">
 
             <TextView
@@ -63,8 +60,7 @@
                 android:layout_margin="@dimen/size_10"
                 android:layout_weight="0.6"
                 android:text="@string/land_detail"
-                android:textSize="@dimen/text_20"
-
+                android:textSize="@dimen/text_12"
                 />
 
             <TextView
@@ -74,7 +70,8 @@
                 android:layout_margin="@dimen/size_10"
                 android:drawableLeft="@drawable/call"
                 android:text="9999999999"
-                android:textSize="@dimen/text_20" />
+                android:textSize="@dimen/text_12"
+                android:id="@+id/tv_phoneNumber" />
 
         </LinearLayout>
 
@@ -88,131 +85,124 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/light_gray"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_gray"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/size_10"
                     android:ems="7"
                     android:text="@string/location"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/size_10"
                     android:text="@string/colon"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12" />
 
                 <TextView
+                    android:id="@+id/tv_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/size_10"
                     android:text="@string/location"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_gray"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/size_10"
                     android:ems="7"
                     android:text="@string/propety_type"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/size_10"
                     android:text="@string/colon"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/size_10"
                     android:text="@string/propety_type"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12"
+                    android:id="@+id/tv_propertyType" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_gray"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/size_10"
                     android:ems="7"
                     android:text="@string/direction"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/size_10"
                     android:text="@string/colon"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/size_10"
                     android:text="@string/direction"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12"
+                    android:id="@+id/tv_direction" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_gray"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/size_10"
                     android:ems="7"
                     android:text="@string/description"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/size_10"
                     android:text="@string/colon"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12" />
 
                 <TextView
+                    android:id="@+id/tv_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/size_10"
                     android:text="@string/description"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_12"
+                    android:maxLines="12"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -221,7 +211,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_10"
-            android:background="@color/light_gray"
             android:orientation="horizontal">
 
             <TextView
@@ -231,7 +220,7 @@
                 android:layout_margin="@dimen/size_10"
                 android:layout_weight="0.6"
                 android:text="@string/other"
-                android:textSize="@dimen/text_20"
+                android:textSize="@dimen/text_12"
 
                 />
         </LinearLayout>
@@ -242,7 +231,12 @@
             android:layout_marginBottom="@dimen/size_10"
             android:layout_marginLeft="@dimen/size_10"
             android:background="@drawable/select" />
-        <include layout="@layout/property_cell" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" />
+       <!-- <include layout="@layout/property_cell" />-->
     </LinearLayout>
 
 </ScrollView>

@@ -20,7 +20,7 @@
         <activity android:name=".DashboardActivity" />
         <activity android:name=".VenturesActivity" />
         <activity android:name=".VenturePropertiesActivity" />
-        <activity android:name=".VenturesActivity" />
+        <activity android:name=".PropertyDetailsActivity" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.maxitech.realestate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -47,7 +48,6 @@ public class PropertyFragment extends Fragment {
         recycler_view= (RecyclerView)llContent.findViewById(R.id.recycler_view);
         propertyAdapter =new PropertyAdapter(new ArrayList<PropertyDO>());
         propertyAdapter.refresh(arrProperties);
-        recycler_view.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         recycler_view.setAdapter(propertyAdapter);
         recycler_view.setLayoutManager(new LinearLayoutManager(getActivity()));
         tvConsultantName.setText(consultantName);
@@ -61,13 +61,14 @@ public class PropertyFragment extends Fragment {
         public class MyViewHolder extends RecyclerView.ViewHolder {
             public TextView tvVentureName,tvAddress,tvPhoneNumber;
             public ImageView ivVentureImage;
-
+            public View parentView;
             public MyViewHolder(View view) {
                 super(view);
                 tvAddress = (TextView) view.findViewById(R.id.tvAddress);
                 tvVentureName = (TextView) view.findViewById(R.id.tvVentureName);
                 tvPhoneNumber = (TextView) view.findViewById(R.id.tvPhoneNumber);
                 ivVentureImage = (ImageView) view.findViewById(R.id.ivVentureImage);
+                parentView=view;
             }
         }
 
@@ -89,12 +90,32 @@ public class PropertyFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
+        public void onBindViewHolder(MyViewHolder holder, final int position) {
             PropertyDO propertyDO = propertyDOList.get(position);
             holder.tvVentureName.setText(propertyDO.getName());
             holder.tvAddress.setText(propertyDO.getAddress());
-            holder.tvPhoneNumber.setText(propertyDO.getPhoneNumber());
+            holder.tvPhoneNumber.setText("Phone:"+propertyDO.getPhoneNumber());
            // holder.ivVentureImage.setText("2");
+
+            holder.parentView.setTag(propertyDO);
+            holder.parentView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ArrayList<PropertyDO> tempPropertyList=new ArrayList<PropertyDO>();
+                    PropertyDO property = (PropertyDO) v.getTag();
+                    for(PropertyDO propertydo:arrProperties){
+                        if(property.getPropertyid()!=propertydo.getPropertyid()){
+                            tempPropertyList.add(propertydo);
+                        }
+                    }
+                        Intent intent = new Intent(getActivity(),PropertyDetailsActivity.class);
+                        intent.putExtra("propertyDetails",property);
+                        intent.putExtra("consultantName",consultantName);
+                        intent.putExtra("propertyList",tempPropertyList);
+                        startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                }
+            });
         }
 
         @Override

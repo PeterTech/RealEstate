@@ -68,7 +68,7 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
 
                 }else{
                     hideLoader();
-                    showCoustomDialog("Please select District and Cit");
+                    showCoustomDialog("Please select District and City");
                 }
             }
         });

@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/card"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/size_5"
+    android:layout_marginRight="@dimen/size_10"
+    android:layout_marginLeft="@dimen/size_10">
 
     <ImageView
         android:id="@+id/ivVentureImage"
@@ -27,21 +30,23 @@
             android:layout_marginBottom="@dimen/size_10"
             android:text="@string/area"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/text_20" />
+            android:textSize="@dimen/text_15" />
 
         <TextView
             android:id="@+id/tvAddress"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:maxLines="3"
-            android:text="@string/area" />
+            android:text="@string/area"
+            android:textSize="@dimen/text_12" />
 
         <TextView
             android:id="@+id/tvPhoneNumber"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_10"
-            android:text="phone" />
+            android:text="phone"
+            android:textSize="@dimen/text_12"/>
 
 
     </LinearLayout>

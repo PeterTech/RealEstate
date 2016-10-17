@@ -123,7 +123,6 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
         recycler_view= (RecyclerView) ll_Body.findViewById(R.id.recycler_view);
         consultantAdapter =new ConsultantAdapter(new ArrayList<ConsultantDO>());
 
-        recycler_view.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recycler_view.setAdapter(consultantAdapter);
         recycler_view.setLayoutManager(new LinearLayoutManager(VenturesActivity.this));
         recycler_view.setOnClickListener(new View.OnClickListener() {
