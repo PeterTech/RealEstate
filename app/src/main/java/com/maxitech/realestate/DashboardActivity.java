@@ -2,6 +2,7 @@ package com.maxitech.realestate;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,6 +28,8 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
     private ArrayAdapter<CityDO> arrayCityAdapter;
     @Override
     public void initial() {
+
+        showLoader("");
         getSupportActionBar().hide();
         ll_Body=(LinearLayout)inflater.inflate(R.layout.dashboard_screen,null);
         llMiddle.addView(ll_Body, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
@@ -39,13 +42,34 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                showLoader("");
                 if(!TextUtils.isEmpty(districtCode)&& !TextUtils.isEmpty(cityCode)){
-                    Intent intent= new Intent(DashboardActivity.this,VenturesActivity.class);
-                    intent.putExtra("districtCode",districtCode);
-                    intent.putExtra("cityCode",cityCode);
-                    startActivity(intent);
-                }else
+
+
+                    new Handler().postDelayed(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+
+                            hideLoader();
+                            Intent intent= new Intent(DashboardActivity.this,VenturesActivity.class);
+                            intent.putExtra("districtCode",districtCode);
+                            intent.putExtra("cityCode",cityCode);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                        }
+
+
+                    },2000);
+
+                }else{
+                    hideLoader();
                     showCoustomDialog("Please select District and Cit");
+                }
             }
         });
     }
@@ -105,7 +129,7 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
                     arrCities.add(cityDO);
                 }
 
-
+                hideLoader();
             }
 
             @Override

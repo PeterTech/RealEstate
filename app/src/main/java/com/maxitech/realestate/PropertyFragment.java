@@ -23,11 +23,11 @@ public class PropertyFragment extends Fragment {
     private PropertyAdapter propertyAdapter;
     private LinearLayout llContent;
     private ArrayList<PropertyDO> arrProperties;
-    public PropertyFragment() {
-        // Required empty public constructor
-    }
-    public PropertyFragment(ArrayList<PropertyDO> arrProperties) {
-        this.arrProperties = arrProperties;
+    private String consultantName = "";
+    private TextView tvConsultantName;
+    public PropertyFragment(ArrayList<PropertyDO> propertyDOs, String consultantName) {
+        this.arrProperties = propertyDOs;
+        this.consultantName = consultantName;
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,12 +43,14 @@ public class PropertyFragment extends Fragment {
 
     }
     private  void initializeView(){
+        tvConsultantName = (TextView)llContent.findViewById(R.id.tvConsultantName);
         recycler_view= (RecyclerView)llContent.findViewById(R.id.recycler_view);
         propertyAdapter =new PropertyAdapter(new ArrayList<PropertyDO>());
         propertyAdapter.refresh(arrProperties);
         recycler_view.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         recycler_view.setAdapter(propertyAdapter);
         recycler_view.setLayoutManager(new LinearLayoutManager(getActivity()));
+        tvConsultantName.setText(consultantName);
 
     }
 
