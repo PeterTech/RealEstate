@@ -47,6 +47,7 @@ public class PropertyFragment extends Fragment {
         recycler_view= (RecyclerView)llContent.findViewById(R.id.recycler_view);
         propertyAdapter =new PropertyAdapter(new ArrayList<PropertyDO>());
         propertyAdapter.refresh(arrProperties);
+        recycler_view.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         recycler_view.setAdapter(propertyAdapter);
         recycler_view.setLayoutManager(new LinearLayoutManager(getActivity()));
         tvConsultantName.setText(consultantName);
