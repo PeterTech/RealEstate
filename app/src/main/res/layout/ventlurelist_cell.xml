@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
     android:background="@drawable/card"
     android:gravity="center_vertical"
     android:orientation="horizontal"
@@ -24,7 +23,7 @@
         android:layout_marginRight="@dimen/size_10"
         android:background="@drawable/box"
         android:gravity="center"
-        android:text="1"
+        android:text=""
         android:textColor="@color/white_text" />
 
     <ImageView
