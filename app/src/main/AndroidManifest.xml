@@ -21,6 +21,7 @@
         <activity android:name=".VenturesActivity" />
         <activity android:name=".VenturePropertiesActivity" />
         <activity android:name=".PropertyDetailsActivity" />
+        <activity android:name=".PropertySearchActivity" />
     </application>
 
 </manifest>
