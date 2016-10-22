@@ -30,7 +30,7 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
     public void initial() {
 
         showLoader("");
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         ll_Body=(LinearLayout)inflater.inflate(R.layout.dashboard_screen,null);
         llMiddle.addView(ll_Body, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         initializeView();
@@ -55,7 +55,8 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
                         {
 
                             hideLoader();
-                            Intent intent= new Intent(DashboardActivity.this,VenturesActivity.class);
+//                            Intent intent= new Intent(DashboardActivity.this,VenturesActivity.class);
+                            Intent intent= new Intent(DashboardActivity.this,PropertySearchActivity.class);
                             intent.putExtra("districtCode",districtCode);
                             intent.putExtra("cityCode",cityCode);
                             startActivity(intent);
