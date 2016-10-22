@@ -25,6 +25,7 @@ public class MyHandler extends RecyclerView.Adapter<MyHandler.MyViewHolder> {
 
         TextView first, last;
         ImageView iv;
+        //hjhj
 
         public MyViewHolder(View itemView) {
             super(itemView);
