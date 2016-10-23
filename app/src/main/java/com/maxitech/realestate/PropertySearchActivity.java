@@ -4,7 +4,6 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -88,8 +87,7 @@ public class PropertySearchActivity extends BaseActivity{
         alertview.setAdapter(adapter);
         Toolbar toolbar = (Toolbar)ll_Body.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(null);
         collapsingToolbarLayout = (CollapsingToolbarLayout)ll_Body.findViewById(R.id.collapsing_toolbar);
         dynamicToolbarColor();
         toolbarTextAppernce();

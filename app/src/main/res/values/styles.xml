@@ -5,6 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:homeAsUpIndicator">@null</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -17,7 +18,7 @@
     </style>
 
     <style name="collapsedappbar" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/text_12</item>
         <item name="android:textColor">@color/white_text</item>
     </style>
 
