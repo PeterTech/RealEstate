@@ -90,6 +90,9 @@ public class PropertySearchActivity extends BaseActivity{
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        toolbar.setContentInsetsAbsolute(0,0);
+        toolbar.getMenu().clear();
+        toolbar.setNavigationIcon(null);
         collapsingToolbarLayout = (CollapsingToolbarLayout)ll_Body.findViewById(R.id.collapsing_toolbar);
         dynamicToolbarColor();
         toolbarTextAppernce();
