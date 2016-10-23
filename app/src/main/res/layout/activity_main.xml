@@ -38,8 +38,10 @@
                 <TextView
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:hint="Enter Value"
+                    android:textColor="@android:color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
