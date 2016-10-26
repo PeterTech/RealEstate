@@ -30,12 +30,12 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
     public void initial() {
 
         showLoader("");
-//        getSupportActionBar().hide();
+        getSupportActionBar().hide();
         ll_Body=(LinearLayout)inflater.inflate(R.layout.dashboard_screen,null);
         llMiddle.addView(ll_Body, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         initializeView();
         Firebase.setAndroidContext(this);
-        myFirebaseRef=new Firebase("https://rlestate-e2700.firebaseio.com/");
+        myFirebaseRef=new Firebase("https://jaaga-e23ea.firebaseio.com/");
         getList();
         sp_district.setOnItemSelectedListener(this);
         sp_city.setOnItemSelectedListener(this);
@@ -55,12 +55,12 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
                         {
 
                             hideLoader();
-//                            Intent intent= new Intent(DashboardActivity.this,VenturesActivity.class);
-                            Intent intent= new Intent(DashboardActivity.this,PropertySearchActivity.class);
+                            Intent intent= new Intent(DashboardActivity.this,VenturePropertiesActivity.class);
+//                            Intent intent= new Intent(DashboardActivity.this,PropertySearchActivity.class);
                             intent.putExtra("districtCode",districtCode);
                             intent.putExtra("cityCode",cityCode);
                             startActivity(intent);
-                            finish();
+//                            finish();
                             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                         }
 

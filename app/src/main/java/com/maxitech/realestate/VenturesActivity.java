@@ -44,7 +44,7 @@ public class VenturesActivity extends BaseActivity implements AdapterView.OnItem
         cityCode=bundle.getString("cityCode");
         initializeView();
         Firebase.setAndroidContext(this);
-        myFirebaseRef=new Firebase("https://rlestate-e2700.firebaseio.com/");
+        myFirebaseRef=new Firebase("https://jaaga-e23ea.firebaseio.com/");
         getList();
         sp_area.setOnItemSelectedListener(this);
 

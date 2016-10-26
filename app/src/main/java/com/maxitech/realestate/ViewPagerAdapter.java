@@ -2,7 +2,7 @@ package com.maxitech.realestate;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Created by Avyukt on 10/16/2016.
  */
-public class ViewPagerAdapter extends FragmentPagerAdapter {
-    private final List<Fragment> mFragmentList = new ArrayList<>();
-    private final List<String> mFragmentTitleList = new ArrayList<>();
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+    private  List<Fragment> mFragmentList = new ArrayList<>();
+    private  List<String> mFragmentTitleList = new ArrayList<>();
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -21,6 +21,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
         return mFragmentList.get(position);
     }
 
@@ -32,6 +33,16 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public void addFragment(Fragment fragment, String title) {
         mFragmentList.add(fragment);
         mFragmentTitleList.add(title);
+    }
+
+    public void clearFragments(){
+        mFragmentList = new ArrayList<>();
+        mFragmentTitleList = new ArrayList<>();
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
     }
 
     @Override

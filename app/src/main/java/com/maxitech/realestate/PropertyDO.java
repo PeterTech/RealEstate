@@ -8,12 +8,12 @@ import java.io.Serializable;
 
 public class PropertyDO implements Serializable{
 
-    String address,consultantid,imageurl,name,phoneNumber,propertyType,propertyid;
+    String address,consultantid,imageurl,name,phoneNumber,propertyType,propertyid,areacode;
 
     public PropertyDO() {
     }
 
-    public PropertyDO(String address, String consultantid, String imageurl, String name, String phoneNumber, String propertyType, String propertyid) {
+    public PropertyDO(String address, String consultantid, String imageurl, String name, String phoneNumber, String propertyType, String propertyid, String areacode) {
         this.address = address;
         this.consultantid = consultantid;
         this.imageurl = imageurl;
@@ -21,6 +21,7 @@ public class PropertyDO implements Serializable{
         this.phoneNumber = phoneNumber;
         this.propertyType = propertyType;
         this.propertyid = propertyid;
+        this.areacode = areacode;
     }
 
     public String getAddress() {
@@ -77,5 +78,13 @@ public class PropertyDO implements Serializable{
 
     public void setPropertyid(String propertyid) {
         this.propertyid = propertyid;
+    }
+
+    public String getAreacode() {
+        return areacode;
+    }
+
+    public void setAreacode(String areacode) {
+        this.areacode = areacode;
     }
 }

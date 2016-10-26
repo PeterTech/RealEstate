@@ -24,11 +24,9 @@ public class PropertyFragment extends Fragment {
     private PropertyAdapter propertyAdapter;
     private LinearLayout llContent;
     private ArrayList<PropertyDO> arrProperties;
-    private String consultantName = "";
     private TextView tvConsultantName;
-    public PropertyFragment(ArrayList<PropertyDO> propertyDOs, String consultantName) {
+    public PropertyFragment(ArrayList<PropertyDO> propertyDOs) {
         this.arrProperties = propertyDOs;
-        this.consultantName = consultantName;
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,12 +43,12 @@ public class PropertyFragment extends Fragment {
     }
     private  void initializeView(){
         tvConsultantName = (TextView)llContent.findViewById(R.id.tvConsultantName);
+        tvConsultantName.setVisibility(View.GONE);
         recycler_view= (RecyclerView)llContent.findViewById(R.id.recycler_view);
         propertyAdapter =new PropertyAdapter(new ArrayList<PropertyDO>());
         propertyAdapter.refresh(arrProperties);
         recycler_view.setAdapter(propertyAdapter);
         recycler_view.setLayoutManager(new LinearLayoutManager(getActivity()));
-        tvConsultantName.setText(consultantName);
 
     }
 
@@ -95,8 +93,15 @@ public class PropertyFragment extends Fragment {
             holder.tvVentureName.setText(propertyDO.getName());
             holder.tvAddress.setText(propertyDO.getAddress());
             holder.tvPhoneNumber.setText("Phone:"+propertyDO.getPhoneNumber());
-           // holder.ivVentureImage.setText("2");
 
+            if(position == 0)
+                 holder.ivVentureImage.setImageResource(R.drawable.home1);
+
+            else if(position == 1)
+                holder.ivVentureImage.setImageResource(R.drawable.home2);
+
+            else if(position == 2)
+                holder.ivVentureImage.setImageResource(R.drawable.home3);
             holder.parentView.setTag(propertyDO);
             holder.parentView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -110,7 +115,7 @@ public class PropertyFragment extends Fragment {
                     }
                         Intent intent = new Intent(getActivity(),PropertyDetailsActivity.class);
                         intent.putExtra("propertyDetails",property);
-                        intent.putExtra("consultantName",consultantName);
+                        intent.putExtra("consultantName",property.getName());
                         intent.putExtra("propertyList",tempPropertyList);
                         startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);

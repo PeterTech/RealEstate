@@ -93,9 +93,10 @@ public class PropertySearchActivity extends BaseActivity{
         toolbar.setContentInsetsAbsolute(0,0);
         toolbar.getMenu().clear();
         toolbar.setNavigationIcon(null);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white_text));
         collapsingToolbarLayout = (CollapsingToolbarLayout)ll_Body.findViewById(R.id.collapsing_toolbar);
         dynamicToolbarColor();
-        toolbarTextAppernce();
+//        toolbarTextAppernce();
         tabLayout = (TabLayout)ll_Body.findViewById(R.id.mytabs);
         tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
@@ -121,10 +122,10 @@ public class PropertySearchActivity extends BaseActivity{
         collapsingToolbarLayout.setStatusBarScrimColor(getResources().getColor(R.color.colorPrimaryDark));
     }
 
-    private void toolbarTextAppernce() {
-        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
-        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
-    }
+//    private void toolbarTextAppernce() {
+//        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
+//        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
+//    }
 
     public void addspinnervalues() {
         list.add("Manoj");

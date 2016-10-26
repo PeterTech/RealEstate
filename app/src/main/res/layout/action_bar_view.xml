@@ -9,10 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:drawableLeft="@drawable/back"
-        android:drawablePadding="@dimen/size_5"
+        android:drawablePadding="@dimen/size_2"
         android:drawableRight="@drawable/home"
         android:gravity="center"
-        android:paddingLeft="@dimen/size_10"
         android:textColor="@color/white_text"
         android:textSize="@dimen/text_20" />
 </LinearLayout>

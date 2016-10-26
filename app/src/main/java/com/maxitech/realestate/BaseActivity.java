@@ -3,6 +3,7 @@ package com.maxitech.realestate;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -29,20 +30,26 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(arg0);
         setContentView(R.layout.base);
         initializeControls();
-//        actionBar = getSupportActionBar();
-//        actionBar.setDisplayHomeAsUpEnabled(false);
-//        actionBar.setDisplayShowHomeEnabled(false);
-//        actionBar.setDisplayShowTitleEnabled(false);
-//        actionBar.setDisplayShowCustomEnabled(true);
-//        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-//        LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View actionBarView = inflator.inflate(R.layout.action_bar_view, null);
-//        ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT,
-//                ActionBar.LayoutParams.MATCH_PARENT);
-//        actionBar.setCustomView(actionBarView, layoutParams);
-//        tvScreenTitle = (TextView) actionBarView.findViewById(R.id.tvScreenTitle);
-//        actionBar.setCustomView(actionBarView);
+
+        if(BaseActivity.this instanceof VenturePropertiesActivity) {
+
+        }else{
+
+            actionBar = getSupportActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayShowHomeEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+            LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View actionBarView = inflator.inflate(R.layout.action_bar_view, null);
+            ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT,
+                    ActionBar.LayoutParams.MATCH_PARENT);
+            actionBar.setCustomView(actionBarView, layoutParams);
+            tvScreenTitle = (TextView) actionBarView.findViewById(R.id.tvScreenTitle);
+            actionBar.setCustomView(actionBarView);
+        }
         initial();
     }
 
