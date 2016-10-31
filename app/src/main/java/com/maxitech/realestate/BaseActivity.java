@@ -2,17 +2,23 @@ package com.maxitech.realestate;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -24,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public TextView tvHome, tvHeading, tvDone;
     public ActionBar actionBar;
     public TextView tvScreenTitle;
+    public ImageView ivBack,ivHome;
 
     @Override
     protected void onCreate(Bundle arg0) {
@@ -48,6 +55,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                     ActionBar.LayoutParams.MATCH_PARENT);
             actionBar.setCustomView(actionBarView, layoutParams);
             tvScreenTitle = (TextView) actionBarView.findViewById(R.id.tvScreenTitle);
+            ivBack = (ImageView) actionBarView.findViewById(R.id.ivBack);
+            ivHome = (ImageView) actionBarView.findViewById(R.id.ivHome);
             actionBar.setCustomView(actionBarView);
         }
         initial();
@@ -129,5 +138,20 @@ public abstract class BaseActivity extends AppCompatActivity {
                 progressDialog = null;
             }
         }
+    }
+
+    public void showImagePopUp(Bitmap bitmap)
+    {
+        CustomImageView ivZoom = new CustomImageView(BaseActivity.this,null);
+        final Dialog dialog = new Dialog(BaseActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(ivZoom, new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        ivZoom.setImage(bitmap, RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT);
+        dialog.getWindow().setBackgroundDrawable(
+                new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.show();
+
     }
 }

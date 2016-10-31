@@ -1,6 +1,7 @@
 package com.maxitech.realestate;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,7 +59,7 @@ public class PropertyFragment extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
             public TextView tvVentureName,tvAddress,tvPhoneNumber;
-            public ImageView ivVentureImage;
+            public ImageView ivVentureImage,ivMapIcon;
             public View parentView;
             public MyViewHolder(View view) {
                 super(view);
@@ -66,6 +67,7 @@ public class PropertyFragment extends Fragment {
                 tvVentureName = (TextView) view.findViewById(R.id.tvVentureName);
                 tvPhoneNumber = (TextView) view.findViewById(R.id.tvPhoneNumber);
                 ivVentureImage = (ImageView) view.findViewById(R.id.ivVentureImage);
+                ivMapIcon = (ImageView) view.findViewById(R.id.ivMapIcon);
                 parentView=view;
             }
         }
@@ -119,6 +121,19 @@ public class PropertyFragment extends Fragment {
                         intent.putExtra("propertyList",tempPropertyList);
                         startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                }
+            });
+
+            holder.ivMapIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    double latitude1=17.4707515,longitude1=78.3366296,latitude2= 17.4477532,longitude2=78.3677646;
+                    String uri = "http://maps.google.com/maps?f=d&hl=en&saddr="+((VenturePropertiesActivity)getActivity()).latitude
+                            +","+((VenturePropertiesActivity)getActivity()).longitude+"&daddr="+latitude2+","+longitude2;
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+                    startActivity(Intent.createChooser(intent, "Select an application"));
+
                 }
             });
         }

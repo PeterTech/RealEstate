@@ -31,7 +31,7 @@ public class MyHandler extends RecyclerView.Adapter<MyHandler.MyViewHolder> {
             super(itemView);
             first = (TextView) itemView.findViewById(R.id.firsttv);
           //  iv = (ImageView) itemView.findViewById(R.id.myimage);
-            ll_myimage = (LinearLayout) itemView.findViewById(R.id.ll_myimage);
+//            ll_myimage = (LinearLayout) itemView.findViewById(R.id.ll_myimage);
         }
     }
 

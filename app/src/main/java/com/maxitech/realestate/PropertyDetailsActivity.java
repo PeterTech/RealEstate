@@ -1,6 +1,9 @@
 package com.maxitech.realestate;
 
 import android.app.ActionBar;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,6 +41,22 @@ public class PropertyDetailsActivity extends BaseActivity {
         tvScreenTitle.setText(consultantName + "");
         initializeView();
         loadDetails();
+        ivHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(R.anim.animation_enter, R.anim.animation_leave);
+            }
+        });
     }
 
     private void loadDetails() {
@@ -49,6 +68,7 @@ public class PropertyDetailsActivity extends BaseActivity {
         tv_description.setText("Owning a house is a matter of immense pride and satisfaction.A home is a canvas where we paint our dreams, let our imagination fly and experience the true meaning of independence. Twincity Group offers you an opportunity to own your 3 Bedroom Duplex Villas on beautifully landscaped residential site Uttampur.Enjoy an unforgettable suburban living in these beautifully constructed independent homes with profuse greenery,scenic locale and all the luxurious amenties.");
 
     }
+
 
     private void initializeView() {
         tvVentureName = (TextView) ll_Body.findViewById(R.id.tvVentureName);
@@ -66,6 +86,26 @@ public class PropertyDetailsActivity extends BaseActivity {
         propertyAdapter.refresh(propertyDOList);
         recycler_view.setAdapter(propertyAdapter);
         recycler_view.setLayoutManager(new LinearLayoutManager(PropertyDetailsActivity.this));
+
+
+        img_plot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bitmap bitmap = ((BitmapDrawable)img_plot.getDrawable()).getBitmap();
+                showImagePopUp(bitmap);
+
+            }
+        });
+
+        img_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bitmap bitmap = ((BitmapDrawable)img_layout.getDrawable()).getBitmap();
+                showImagePopUp(bitmap);
+
+            }
+        });
+
 
     }
 
