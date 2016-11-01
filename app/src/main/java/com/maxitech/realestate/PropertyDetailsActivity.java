@@ -1,12 +1,16 @@
 package com.maxitech.realestate;
 
 import android.app.ActionBar;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +28,20 @@ public class PropertyDetailsActivity extends BaseActivity {
     private LinearLayout ll_Body;
     private PropertyDO propertyDO;
     private TextView tvVentureName, tv_phoneNumber, tv_location, tv_propertyType, tv_direction, tv_description;
-    private ImageView img_plot, img_layout;
+   // private ImageView img_plot, img_layout;
     private String consultantName = "";
     private ArrayList<PropertyDO> propertyDOList;
     private RecyclerView recycler_view;
     private PropertyAdapter propertyAdapter;
+    private ViewPager plot_pager,layout_pager;
+    private ViewPagerAdapter plot_adapter,layout_adapter;
+   private int[] mResources = {
+            R.drawable.plot,
+            R.drawable.image_four,
+            R.drawable.image_one,
+            R.drawable.image_three,
+    };
+
 
     @Override
     public void initial() {
@@ -40,8 +53,14 @@ public class PropertyDetailsActivity extends BaseActivity {
         propertyDOList = (ArrayList<PropertyDO>) bundle.get("propertyList");
         tvScreenTitle.setText(consultantName + "");
         initializeView();
+        plot_adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        plot_pager.setAdapter(plot_adapter);
+
+        layout_adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        layout_pager.setAdapter(layout_adapter);
+
         loadDetails();
-        ivHome.setOnClickListener(new View.OnClickListener() {
+                ivHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
@@ -50,6 +69,7 @@ public class PropertyDetailsActivity extends BaseActivity {
             }
         });
 
+        showPgerImages();
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +77,29 @@ public class PropertyDetailsActivity extends BaseActivity {
                 overridePendingTransition(R.anim.animation_enter, R.anim.animation_leave);
             }
         });
+        tv_phoneNumber.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                try {
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:" + propertyDO.getPhoneNumber()));
+                    if (ActivityCompat.checkSelfPermission(PropertyDetailsActivity.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+                    startActivity(callIntent);
+                } catch (ActivityNotFoundException activityException) {
+                    Log.e("Calling a Phone Number", "Call failed", activityException);
+                }
+            }
+        });
+
     }
 
     private void loadDetails() {
@@ -78,8 +121,12 @@ public class PropertyDetailsActivity extends BaseActivity {
         tv_direction = (TextView) ll_Body.findViewById(R.id.tv_direction);
         tv_description = (TextView) ll_Body.findViewById(R.id.tv_description);
 
-        img_plot = (ImageView) ll_Body.findViewById(R.id.img_plot);
-        img_layout = (ImageView) ll_Body.findViewById(R.id.img_layout);
+//        img_plot = (ImageView) ll_Body.findViewById(R.id.img_plot);
+//        img_layout = (ImageView) ll_Body.findViewById(R.id.img_layout);
+
+        plot_pager = (ViewPager) ll_Body.findViewById(R.id.plot_pager);
+        layout_pager = (ViewPager) ll_Body.findViewById(R.id.layout_paager);
+
 
         recycler_view = (RecyclerView) ll_Body.findViewById(R.id.recycler_view);
         propertyAdapter = new PropertyAdapter(new ArrayList<PropertyDO>());
@@ -88,23 +135,23 @@ public class PropertyDetailsActivity extends BaseActivity {
         recycler_view.setLayoutManager(new LinearLayoutManager(PropertyDetailsActivity.this));
 
 
-        img_plot.setOnClickListener(new View.OnClickListener() {
+       /* img_plot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bitmap bitmap = ((BitmapDrawable)img_plot.getDrawable()).getBitmap();
+                Bitmap bitmap = ((BitmapDrawable) img_plot.getDrawable()).getBitmap();
                 showImagePopUp(bitmap);
 
             }
         });
-
-        img_layout.setOnClickListener(new View.OnClickListener() {
+*/
+      /*  img_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bitmap bitmap = ((BitmapDrawable)img_layout.getDrawable()).getBitmap();
+                Bitmap bitmap = ((BitmapDrawable) img_layout.getDrawable()).getBitmap();
                 showImagePopUp(bitmap);
 
             }
-        });
+        });*/
 
 
     }
@@ -171,4 +218,22 @@ public class PropertyDetailsActivity extends BaseActivity {
         finish();
         overridePendingTransition(R.anim.animation_enter, R.anim.animation_leave);
     }
+private  void showPgerImages(){
+    plot_adapter.clearFragments();
+    plot_adapter.addFragment(new ImageFragment(mResources[0]),"");
+    plot_adapter.addFragment(new ImageFragment(mResources[1]),"");
+    plot_adapter.addFragment(new ImageFragment(mResources[2]),"");
+    plot_adapter.addFragment(new ImageFragment(mResources[3]),"");
+    plot_adapter.notifyDataSetChanged();
+    plot_pager.setAdapter(plot_adapter);
+
+    layout_adapter.clearFragments();
+    layout_adapter.addFragment(new ImageFragment(mResources[0]),"");
+    layout_adapter.addFragment(new ImageFragment(mResources[1]),"");
+    layout_adapter.addFragment(new ImageFragment(mResources[2]),"");
+    layout_adapter.addFragment(new ImageFragment(mResources[3]),"");
+    layout_adapter.notifyDataSetChanged();
+    layout_adapter.notifyDataSetChanged();
+    layout_pager.setAdapter(layout_adapter);
+}
 }

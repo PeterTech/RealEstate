@@ -69,6 +69,11 @@
                 android:layout_marginLeft="@dimen/size_10"
                 android:src="@drawable/directions" />
         </LinearLayout>
+        <ImageView
+            android:id="@+id/ivLike"
+            android:layout_width="@dimen/size_30"
+            android:layout_height="@dimen/size_30"
+            android:src="@drawable/unlike" />
 
     </LinearLayout>
 </LinearLayout>

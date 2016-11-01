@@ -48,6 +48,7 @@ public class VenturePropertiesActivity extends BaseActivity {
     protected LocationListener locationListener;
     private Criteria locationCritera;
 
+
     @Override
     public void initial() {
         ll_Body = (CoordinatorLayout) inflater.inflate(R.layout.venture_property_screen, null);

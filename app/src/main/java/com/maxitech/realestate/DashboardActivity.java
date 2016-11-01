@@ -1,7 +1,10 @@
 package com.maxitech.realestate;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
@@ -36,7 +39,15 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
         initializeView();
         Firebase.setAndroidContext(this);
         myFirebaseRef=new Firebase("https://jaaga-e23ea.firebaseio.com/");
-        getList();
+        ConnectivityManager conMgr= (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=conMgr.getActiveNetworkInfo();
+        if(networkInfo!=null && networkInfo.isConnected()){
+            getList();
+        }else{
+            hideLoader();
+            showCoustomDialog("Please Check Internet Connection.");
+        }
+
         sp_district.setOnItemSelectedListener(this);
         sp_city.setOnItemSelectedListener(this);
         btn_submit.setOnClickListener(new View.OnClickListener() {
@@ -182,5 +193,10 @@ public class DashboardActivity extends BaseActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 }

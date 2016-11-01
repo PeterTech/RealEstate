@@ -26,6 +26,8 @@ public class PropertyFragment extends Fragment {
     private LinearLayout llContent;
     private ArrayList<PropertyDO> arrProperties;
     private TextView tvConsultantName;
+    private boolean isLike=false;
+
     public PropertyFragment(ArrayList<PropertyDO> propertyDOs) {
         this.arrProperties = propertyDOs;
     }
@@ -59,7 +61,7 @@ public class PropertyFragment extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
             public TextView tvVentureName,tvAddress,tvPhoneNumber;
-            public ImageView ivVentureImage,ivMapIcon;
+            public ImageView ivVentureImage,ivMapIcon,ivLike;
             public View parentView;
             public MyViewHolder(View view) {
                 super(view);
@@ -68,6 +70,7 @@ public class PropertyFragment extends Fragment {
                 tvPhoneNumber = (TextView) view.findViewById(R.id.tvPhoneNumber);
                 ivVentureImage = (ImageView) view.findViewById(R.id.ivVentureImage);
                 ivMapIcon = (ImageView) view.findViewById(R.id.ivMapIcon);
+                ivLike = (ImageView) view.findViewById(R.id.ivLike);
                 parentView=view;
             }
         }
@@ -90,7 +93,7 @@ public class PropertyFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(MyViewHolder holder, final int position) {
+        public void onBindViewHolder(final MyViewHolder holder, final int position) {
             PropertyDO propertyDO = propertyDOList.get(position);
             holder.tvVentureName.setText(propertyDO.getName());
             holder.tvAddress.setText(propertyDO.getAddress());
@@ -104,6 +107,17 @@ public class PropertyFragment extends Fragment {
 
             else if(position == 2)
                 holder.ivVentureImage.setImageResource(R.drawable.home3);
+
+            holder.ivLike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    isLike=!isLike;
+                    if(isLike)
+                        holder.ivLike.setImageResource(R.drawable.like);
+                    else
+                        holder.ivLike.setImageResource(R.drawable.unlike);
+                }
+            });
             holder.parentView.setTag(propertyDO);
             holder.parentView.setOnClickListener(new View.OnClickListener() {
                 @Override

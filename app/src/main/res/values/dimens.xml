@@ -10,6 +10,7 @@
     <dimen name="size_40">40dp</dimen>
     <dimen name="size_100dip">100dip</dimen>
     <dimen name="size_120dip">120dip</dimen>
+    <dimen name="size_200dip">200dip</dimen>
 
     <!--Text Size -->
     <dimen name="text_12">12sp</dimen>
